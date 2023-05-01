@@ -8,24 +8,31 @@ var promptInitiate = function() {
   return;
 }
 var passwordLengthPrompt = function() {
-  prompt("Please select password length (8-128 characters)");
-  return;
+  while (true) {
+    var lengthInput = prompt("Please select password length (8-128 characters)");
+    if (lengthInput == null || lengthInput > 128 || lengthInput < 8) {
+      alert("Please enter a valid response.");
+    } else if (lengthInput >= 8 || lengthInput <= 128) {
+      break;
+    }
+  }
+  return lengthInput;
 }
 var lowercase = function() {
-  confirm("Would you like to include lowercase leters?");
-  return;
+  lowercaseInput = confirm("Would you like to include lowercase leters?");
+  return lowercaseInput;
 }
 var uppercase = function() {
-  confirm("Would you like to include uppercase leters?");
-  return;
+  uppercaseInput = confirm("Would you like to include uppercase leters?");
+  return uppercaseInput;
 }
 var numbers = function () {
-  confirm("Would you like to include numbers?");
-  return;
+  numbersInput = confirm("Would you like to include numbers?");
+  return numbersInput;
 }
 var specialCharacters = function () {
-  confirm("Would you like to include special characters?");
-  return;
+  specialCharactersInput = confirm("Would you like to include special characters?");
+  return specialCharactersInput;
 }
 
 // initiate prompts
