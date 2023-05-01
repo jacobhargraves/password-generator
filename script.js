@@ -39,10 +39,17 @@ var specialCharacters = function () {
 function criteriaPrompt() {
   promptInitiate();
   passwordLengthPrompt();
-  lowercase();
-  uppercase();
-  numbers();
-  specialCharacters();
+  while (true) {
+    lowercase();
+    uppercase();
+    numbers();
+    specialCharacters();
+    if (lowercaseInput == false && uppercaseInput == false && numbersInput == false && specialCharactersInput == false) {
+      alert("Please select at least one criteria for characters.");
+    } else {
+      break;
+    }
+  }
   return;
 }
 
