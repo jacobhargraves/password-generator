@@ -60,25 +60,25 @@ function generatePassword() {
   // displays criteria selection in alert and adds the associated array to allCharString
   if (lowercaseValue) {
     var lCString = "Lowercase characters (ex. a,b,c)\n";
-    allCharString.concat(lowerLetStringList);
+    allCharString += lowerLetStringList;
   } else {
     lCString = "";
   }
   if (uppercaseValue) {
     var uCString = "Uppercase characters (ex. A,B,C)\n";
-    allCharString.concat(upperLetStingList);
+    allCharString += upperLetStingList;
   } else {
     uCString = "";
   }
   if (numbersValue) {
     var numbersString = "Numbers (ex. 1,2,3)\n";
-    allCharString.concat(numbersStringList);
+    allCharString += numbersStringList;
   } else {
     numbersString = "";
   }
   if (specialCharactersValue) {
     var sCString = "Special Characters (ex. !,@,#)\n";
-    allCharString.concat(specCharList);
+    allCharString += specCharList;
   } else {
     sCString = "";
   }
