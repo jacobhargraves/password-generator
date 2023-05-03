@@ -34,27 +34,12 @@ var specialCharacters = function () {
   var specialCharactersInput = confirm("Would you like to include special characters?");
   return specialCharactersInput;
 }
-//var criteriaSelections = function() {
-//  if (lowercaseInput == true) {
-//    strLCI = "Lowercase";
-//  }
-//  if (uppercaseInput == true) {
-//    strUCI = "Uppercase";
-//  }
-//  if (numbersInput == true) {
-//    strNI = "Numbers";
-//  }
-//  if (SpecialCharactersInput == true) {
-//    strSCI = "Special characters";
-//  }
-//  alert("Your password length is: " + lengthInput + "\n" + 
-//  "You have chose to include" + strLCI + strUCI + strNI + strSCI);
-//}
 
 // initiate prompts
 function generatePassword() {
   promptInitiate();
   var lengthValue = passwordLengthPrompt();
+  // while loop makes user select at least one criteria
   while (true) {
     var lowercaseValue = lowercase();
     var uppercaseValue = uppercase();
@@ -66,18 +51,27 @@ function generatePassword() {
       break;
     }
   }
+  // displays criteria selection in alert
   if (lowercaseValue) {
     var lCString = "Lowercase characters (ex. a,b,c)\n"
-  } 
+  } else {
+    lCString = ""
+  }
   if (uppercaseValue) {
     var uCString = "Uppercase characters (ex. A,B,C)\n"
-  } 
+  } else {
+    uCString = ""
+  }
   if (numbersValue) {
     var numbersString = "Numbers (ex. 1,2,3)\n"
-  } 
+  } else {
+    numbersString = ""
+  }
   if (specialCharactersValue) {
     var sCString = "Special Characters (ex. !,@,#)\n"
-  } 
+  } else {
+    sCString = ""
+  }
   alert("Your password length is: " + lengthValue + "\n"
   + "You have selected to include:\n" +
   lCString + uCString + numbersString + sCString);
