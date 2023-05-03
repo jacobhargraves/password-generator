@@ -1,6 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// generateBtn.addEventListener("click", criteriaPrompt);
 
 // Variables for prompts
 var promptInitiate = function() {
@@ -35,7 +34,14 @@ var specialCharacters = function () {
   return specialCharactersInput;
 }
 
-// initiate prompts
+// Variables for password generator
+var lowerLetStringList = "abcdefghijklmnopqrstuvwxyz";
+var upperLetStingList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specCharList = "!@#$%&*()+";
+var numbersStringList = "1234567890"; 
+var allCharString = "";
+
+// initiate prompts *MAIN FUNCTION*
 function generatePassword() {
   promptInitiate();
   var lengthValue = passwordLengthPrompt();
@@ -51,30 +57,43 @@ function generatePassword() {
       break;
     }
   }
-  // displays criteria selection in alert
+  // displays criteria selection in alert and adds the associated array to allCharString
   if (lowercaseValue) {
-    var lCString = "Lowercase characters (ex. a,b,c)\n"
+    var lCString = "Lowercase characters (ex. a,b,c)\n";
+    allCharString.concat(lowerLetStringList);
   } else {
-    lCString = ""
+    lCString = "";
   }
   if (uppercaseValue) {
-    var uCString = "Uppercase characters (ex. A,B,C)\n"
+    var uCString = "Uppercase characters (ex. A,B,C)\n";
+    allCharString.concat(upperLetStingList);
   } else {
-    uCString = ""
+    uCString = "";
   }
   if (numbersValue) {
-    var numbersString = "Numbers (ex. 1,2,3)\n"
+    var numbersString = "Numbers (ex. 1,2,3)\n";
+    allCharString.concat(numbersStringList);
   } else {
-    numbersString = ""
+    numbersString = "";
   }
   if (specialCharactersValue) {
-    var sCString = "Special Characters (ex. !,@,#)\n"
+    var sCString = "Special Characters (ex. !,@,#)\n";
+    allCharString.concat(specCharList);
   } else {
-    sCString = ""
+    sCString = "";
   }
   alert("Your password length is: " + lengthValue + "\n"
   + "You have selected to include:\n" +
   lCString + uCString + numbersString + sCString);
+  console.log(allCharString);
+
+  // generates the password from allCharString
+  var generatedPassword = ""
+  for (var i = 0; i <= lengthValue; i++) {
+    var randomNumber = Math.floor(Math.random() * allCharString.length);
+    generatedPassword += allCharString.substring(randomNumber, randomNumber +1);
+  }
+  return generatedPassword;
 }
 
 // Write password to the #password input
