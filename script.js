@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", criteriaPrompt);
+// generateBtn.addEventListener("click", criteriaPrompt);
 
 // Variables for prompts
 var promptInitiate = function() {
@@ -52,7 +52,7 @@ var specialCharacters = function () {
 //}
 
 // initiate prompts
-function criteriaPrompt() {
+function generatePassword() {
   promptInitiate();
   var lengthValue = passwordLengthPrompt();
   while (true) {
@@ -66,8 +66,21 @@ function criteriaPrompt() {
       break;
     }
   }
-  alert("Your password length is: " + lengthValue);
-  return;
+  if (lowercaseValue) {
+    var lCString = "Lowercase characters (ex. a,b,c)\n"
+  } 
+  if (uppercaseValue) {
+    var uCString = "Uppercase characters (ex. A,B,C)\n"
+  } 
+  if (numbersValue) {
+    var numbersString = "Numbers (ex. 1,2,3)\n"
+  } 
+  if (specialCharactersValue) {
+    var sCString = "Special Characters (ex. !,@,#)\n"
+  } 
+  alert("Your password length is: " + lengthValue + "\n"
+  + "You have selected to include:\n" +
+  lCString + uCString + numbersString + sCString);
 }
 
 // Write password to the #password input
@@ -80,4 +93,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
