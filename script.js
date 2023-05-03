@@ -19,37 +19,54 @@ var passwordLengthPrompt = function() {
   return lengthInput;
 }
 var lowercase = function() {
-  lowercaseInput = confirm("Would you like to include lowercase leters?");
+  var lowercaseInput = confirm("Would you like to include lowercase leters?");
   return lowercaseInput;
 }
 var uppercase = function() {
-  uppercaseInput = confirm("Would you like to include uppercase leters?");
+  var uppercaseInput = confirm("Would you like to include uppercase leters?");
   return uppercaseInput;
 }
 var numbers = function () {
-  numbersInput = confirm("Would you like to include numbers?");
+  var numbersInput = confirm("Would you like to include numbers?");
   return numbersInput;
 }
 var specialCharacters = function () {
-  specialCharactersInput = confirm("Would you like to include special characters?");
+  var specialCharactersInput = confirm("Would you like to include special characters?");
   return specialCharactersInput;
 }
+//var criteriaSelections = function() {
+//  if (lowercaseInput == true) {
+//    strLCI = "Lowercase";
+//  }
+//  if (uppercaseInput == true) {
+//    strUCI = "Uppercase";
+//  }
+//  if (numbersInput == true) {
+//    strNI = "Numbers";
+//  }
+//  if (SpecialCharactersInput == true) {
+//    strSCI = "Special characters";
+//  }
+//  alert("Your password length is: " + lengthInput + "\n" + 
+//  "You have chose to include" + strLCI + strUCI + strNI + strSCI);
+//}
 
 // initiate prompts
 function criteriaPrompt() {
   promptInitiate();
-  passwordLengthPrompt();
+  var lengthValue = passwordLengthPrompt();
   while (true) {
-    lowercase();
-    uppercase();
-    numbers();
-    specialCharacters();
-    if (lowercaseInput == false && uppercaseInput == false && numbersInput == false && specialCharactersInput == false) {
+    var lowercaseValue = lowercase();
+    var uppercaseValue = uppercase();
+    var numbersValue = numbers();
+    var specialCharactersValue = specialCharacters();
+    if (lowercaseValue == false && uppercaseValue == false && numbersValue == false && specialCharactersValue == false) {
       alert("Please select at least one criteria for characters.");
     } else {
       break;
     }
   }
+  alert("Your password length is: " + lengthValue);
   return;
 }
 
