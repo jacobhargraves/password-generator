@@ -1,6 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// generateBtn.addEventListener("click", criteriaPrompt);
 
 // Variables for prompts
 var promptInitiate = function() {
@@ -34,27 +33,19 @@ var specialCharacters = function () {
   var specialCharactersInput = confirm("Would you like to include special characters?");
   return specialCharactersInput;
 }
-//var criteriaSelections = function() {
-//  if (lowercaseInput == true) {
-//    strLCI = "Lowercase";
-//  }
-//  if (uppercaseInput == true) {
-//    strUCI = "Uppercase";
-//  }
-//  if (numbersInput == true) {
-//    strNI = "Numbers";
-//  }
-//  if (SpecialCharactersInput == true) {
-//    strSCI = "Special characters";
-//  }
-//  alert("Your password length is: " + lengthInput + "\n" + 
-//  "You have chose to include" + strLCI + strUCI + strNI + strSCI);
-//}
 
-// initiate prompts
+// Variables for password generator
+var lowerLetStringList = "abcdefghijklmnopqrstuvwxyz";
+var upperLetStingList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specCharList = "!@#$%&*()+";
+var numbersStringList = "1234567890"; 
+var allCharString = "";
+
+// initiate prompts *MAIN FUNCTION*
 function generatePassword() {
   promptInitiate();
   var lengthValue = passwordLengthPrompt();
+  // while loop makes user select at least one criteria
   while (true) {
     var lowercaseValue = lowercase();
     var uppercaseValue = uppercase();
@@ -66,21 +57,43 @@ function generatePassword() {
       break;
     }
   }
+  // displays criteria selection in alert and adds the associated array to allCharString
   if (lowercaseValue) {
-    var lCString = "Lowercase characters (ex. a,b,c)\n"
-  } 
+    var lCString = "Lowercase characters (ex. a,b,c)\n";
+    allCharString.concat(lowerLetStringList);
+  } else {
+    lCString = "";
+  }
   if (uppercaseValue) {
-    var uCString = "Uppercase characters (ex. A,B,C)\n"
-  } 
+    var uCString = "Uppercase characters (ex. A,B,C)\n";
+    allCharString.concat(upperLetStingList);
+  } else {
+    uCString = "";
+  }
   if (numbersValue) {
-    var numbersString = "Numbers (ex. 1,2,3)\n"
-  } 
+    var numbersString = "Numbers (ex. 1,2,3)\n";
+    allCharString.concat(numbersStringList);
+  } else {
+    numbersString = "";
+  }
   if (specialCharactersValue) {
-    var sCString = "Special Characters (ex. !,@,#)\n"
-  } 
+    var sCString = "Special Characters (ex. !,@,#)\n";
+    allCharString.concat(specCharList);
+  } else {
+    sCString = "";
+  }
   alert("Your password length is: " + lengthValue + "\n"
   + "You have selected to include:\n" +
   lCString + uCString + numbersString + sCString);
+  console.log(allCharString);
+
+  // generates the password from allCharString
+  var generatedPassword = ""
+  for (var i = 0; i <= lengthValue; i++) {
+    var randomNumber = Math.floor(Math.random() * allCharString.length);
+    generatedPassword += allCharString.substring(randomNumber, randomNumber +1);
+  }
+  return generatedPassword;
 }
 
 // Write password to the #password input
